@@ -1,22 +1,34 @@
 import { useState } from "react";
 import "./App.css";
 import ContactList from "./components/ContactList/ContactList";
-import contacts from "./contacts.json";
 import SearchBox from "./components/SearchBox/SearchBox";
+import ContactForm from "./components/ContactForm/ContactForm";
+import contacts from "./contacts.json";
 
 function App() {
-  const [contact, setContacts] = useState(contacts);
+  const [contactList, setContactList] = useState(contacts);
   const [filter, setFilter] = useState("");
 
-  const visibleContacts = contact.filter((person) =>
-    person.name.toLowerCase().includes(filter.toLowerCase())
+  const addContact = (newContact) => {
+    setContactList([...contactList, newContact]);
+  };
+
+  const deleteContact = (contactId) => {
+    setContactList((prevContact) => {
+      return prevContact.filter((contact) => contact.id !== contactId);
+    });
+  };
+
+  const filteredContacts = contactList.filter((contact) =>
+    contact.name.toLowerCase().includes(filter.toLowerCase())
   );
 
   return (
     <div>
       <h1>Phonebook</h1>
-      <ContactList contacts={visibleContacts} />
+      <ContactForm onAddContact={addContact} />
       <SearchBox value={filter} onFilter={setFilter} />
+      <ContactList contacts={filteredContacts} onDelete={deleteContact} />
     </div>
   );
 }
