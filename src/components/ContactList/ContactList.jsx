@@ -1,6 +1,4 @@
-// ContactList.jsx
-
-import ContactListItem from "../ContactListItem/ContactListItem";
+import Contact from "../Contact/Contact";
 
 const ContactList = ({ contacts, onDelete }) => {
   return (
@@ -8,7 +6,7 @@ const ContactList = ({ contacts, onDelete }) => {
       {contacts.map((contact) => {
         return (
           <li key={contact.id}>
-            <ContactListItem
+            <Contact
               name={contact.name}
               number={contact.number}
               id={contact.id}

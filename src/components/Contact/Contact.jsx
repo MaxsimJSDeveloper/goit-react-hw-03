@@ -1,6 +1,6 @@
 // ContactListItem.jsx
 
-const ContactListItem = ({ name, number, id, onDelete }) => {
+const Contact = ({ name, number, id, onDelete }) => {
   return (
     <div>
       <p>Name: {name}</p>
@@ -12,4 +12,4 @@ const ContactListItem = ({ name, number, id, onDelete }) => {
   );
 };
 
-export default ContactListItem;
+export default Contact;
