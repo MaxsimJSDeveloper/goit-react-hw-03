@@ -1,6 +1,6 @@
-// ContactForm.jsx
+import css from "./ContactForm.module.css";
 
-import { Field, Form, Formik } from "formik";
+import { Field, Form, Formik, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useId } from "react";
 import { nanoid } from "nanoid";
@@ -36,14 +36,40 @@ const ContactForm = ({ onAddContact }) => {
         actions.resetForm();
       }}
     >
-      <Form>
-        <label htmlFor={nameFieldId}>Username</label>
-        <Field type="text" name="username" id={nameFieldId} />
+      <Form className={css.formContainer}>
+        <label htmlFor={nameFieldId} className={css.label}>
+          Username
+        </label>
+        <Field
+          type="text"
+          name="username"
+          id={nameFieldId}
+          className={css.inputField}
+        />
+        <ErrorMessage
+          name="username"
+          component="span"
+          className={css.errorMessage}
+        />
 
-        <label htmlFor={phoneFieldId}>Phone</label>
-        <Field type="text" name="number" id={phoneFieldId} />
+        <label htmlFor={phoneFieldId} className={css.label}>
+          Phone
+        </label>
+        <Field
+          type="text"
+          name="number"
+          id={phoneFieldId}
+          className={css.inputField}
+        />
+        <ErrorMessage
+          name="number"
+          component="span"
+          className={css.errorMessage}
+        />
 
-        <button type="submit">Add contact</button>
+        <button type="submit" className={css.submitButton}>
+          Add contact
+        </button>
       </Form>
     </Formik>
   );
