@@ -5,23 +5,29 @@ import SearchBox from "./components/SearchBox/SearchBox";
 import ContactForm from "./components/ContactForm/ContactForm";
 import contacts from "./contacts.json";
 
+interface ContactsState {
+  id: string;
+  name: string;
+  number: string;
+}
+
 function App() {
-  const [contactList, setContactList] = useState(() => {
+  const [contactList, setContactList] = useState<ContactsState[]>(() => {
     const storedContacts = localStorage.getItem("contacts");
     return storedContacts ? JSON.parse(storedContacts) : [...contacts];
   });
 
-  const [filter, setFilter] = useState("");
+  const [filter, setFilter] = useState<string>("");
 
   useEffect(() => {
     localStorage.setItem("contacts", JSON.stringify(contactList));
   }, [contactList]);
 
-  const addContact = (newContact) => {
+  const addContact = (newContact: ContactsState): void => {
     setContactList([...contactList, newContact]);
   };
 
-  const deleteContact = (contactId) => {
+  const deleteContact = (contactId: string): void => {
     setContactList((prevContact) => {
       return prevContact.filter((contact) => contact.id !== contactId);
     });

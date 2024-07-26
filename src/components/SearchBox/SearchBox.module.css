@@ -1,5 +1,6 @@
 .searchBoxContainer {
   margin-bottom: 20px;
+  max-width: 95%;
 }
 
 .searchBoxInput {
