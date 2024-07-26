@@ -1,7 +1,8 @@
 import Contact from "../Contact/Contact";
 import css from "./ContactList.module.css";
+import { ContactListProps } from "./ContactList.types";
 
-const ContactList = ({ contacts, onDelete }) => {
+const ContactList: React.FC<ContactListProps> = ({ contacts, onDelete }) => {
   return (
     <ul className={css.contactList}>
       {contacts.map((contact) => {

@@ -1,6 +1,7 @@
 import css from "./Contact.module.css";
+import { ContactProps } from "./Contact.types";
 
-const Contact = ({ name, number, id, onDelete }) => {
+const Contact: React.FC<ContactProps> = ({ name, number, id, onDelete }) => {
   return (
     <div className={css.contact}>
       <div className={css.data}>
